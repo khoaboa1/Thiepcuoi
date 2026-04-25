@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+  font-weight: 300;
+  background: #E8DDD0;
+  color: #3a2e25;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* subtle paper grain */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(rgba(184,151,102,0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
+  z-index: 0;
+}
+
+#root { position: relative; z-index: 1; }
+
+@layer components {
+  .section {
+    @apply px-6 py-16 max-w-xl mx-auto text-center;
+  }
+  .eyebrow {
+    @apply uppercase tracking-[0.4em] text-[11px] font-medium text-gold;
+  }
+  .heading {
+    @apply font-display text-3xl sm:text-4xl tracking-wide text-mocha;
+  }
+  .divider {
+    @apply mx-auto my-6 w-16 border-t border-gold/40;
+  }
+}
