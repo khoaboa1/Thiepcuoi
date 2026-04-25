@@ -39,7 +39,7 @@ body::before {
     @apply px-6 py-16 max-w-xl mx-auto text-center;
   }
   .eyebrow {
-    @apply uppercase tracking-[0.4em] text-[11px] font-medium text-gold;
+    @apply uppercase tracking-[0.1em] text-[11px] font-medium text-gold;
   }
   .heading {
     @apply font-display text-3xl sm:text-4xl tracking-wide text-mocha;
