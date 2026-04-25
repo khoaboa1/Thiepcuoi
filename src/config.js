@@ -12,7 +12,7 @@ export const wedding = {
   },
   bride: {
     name: 'MAI THY',
-    fullName: 'Mai Thy',
+    fullName: 'Trần Mai Thy',
     father: 'Trần Tấn Tú',
     mother: 'Dương Thị Kim Thanh',
     phone: '8505019397',

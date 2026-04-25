@@ -1,0 +1,131 @@
+export const translations = {
+  vi: {
+    hero: {
+      saveTheDate: 'Save The Date',
+      quote: 'Tình yêu không phải là nhìn nhau,\nmà là cùng nhìn về một hướng.',
+      scroll: 'cuộn xuống',
+    },
+    welcome: {
+      eyebrow: 'Welcome to our wedding',
+      heading: 'Trân trọng kính mời',
+      subtitle: 'Quý khách tới dự lễ thành hôn của chúng tôi',
+      groomSide: 'Nhà Trai', brideSide: 'Nhà Gái',
+      groomRole: 'Trưởng Nam', brideRole: 'Trưởng Nữ',
+      mr: 'Ông', mrs: 'Bà',
+    },
+    countdown: {
+      eyebrow: 'Đếm ngược tới ngày trọng đại',
+      days: 'Ngày', hours: 'Giờ', minutes: 'Phút', seconds: 'Giây',
+    },
+    invitation: {
+      heading: 'Lễ Thành Hôn',
+      dayLabel: 'Ngày', monthLabel: 'Tháng', yearLabel: 'Năm',
+      subtitle: 'Tham dự tiệc mừng lễ thành hôn của chúng tôi',
+      weekday: 'Thứ Sáu',
+      months: ['Một','Hai','Ba','Tư','Năm','Sáu','Bảy','Tám','Chín','Mười','Mười một','Mười hai'],
+    },
+    calendar: {
+      dows: ['CN','T2','T3','T4','T5','T6','T7'],
+    },
+    venue: {
+      heading: 'Sự kiện',
+      subtitle: 'Hân hạnh được đón tiếp Quý khách',
+      viewMap: 'Xem bản đồ',
+      events: {
+        ceremony: { label: 'Lễ Cưới Tại Nhà Thờ', timeNote: 'Chiều' },
+        reception: { label: 'Tiệc Cưới', timeNote: 'Tối' },
+      },
+    },
+    gallery: {
+      heading: 'Album Ảnh',
+      subtitle: 'Khoảnh khắc của chúng tôi',
+    },
+    rsvp: {
+      heading: 'Xác nhận tham dự',
+      nameLabel: 'Họ và tên', namePlaceholder: 'Nhập tên của bạn',
+      phoneLabel: 'Số điện thoại', phonePlaceholder: 'Nhập số điện thoại',
+      sideLabel: 'Bạn là khách của',
+      groomSide: 'Nhà Trai', brideSide: 'Nhà Gái',
+      attendingLabel: 'Bạn sẽ tham dự?',
+      yes: 'Có, em sẽ đến 🎉', no: 'Tiếc quá, em bận mất 💌',
+      guestsLabel: 'Số người tham dự',
+      messageLabel: 'Lời chúc (tuỳ chọn)',
+      messagePlaceholder: 'Gửi đôi lời tới cô dâu chú rể...',
+      submit: 'Gửi xác nhận', sending: 'Đang gửi...',
+      successTitle: 'Cảm ơn bạn!',
+      successMsg: 'Chúng tôi đã nhận được xác nhận của bạn. Hẹn gặp bạn trong ngày trọng đại!',
+      error: 'Có lỗi xảy ra. Vui lòng thử lại sau ít phút.',
+    },
+    contact: {
+      heading: 'Liên hệ',
+      subtitle: 'Mọi thắc mắc vui lòng liên hệ',
+      groom: 'Chú Rể', bride: 'Cô Dâu',
+    },
+    closing: { thankYou: 'Thank You' },
+  },
+
+  en: {
+    hero: {
+      saveTheDate: 'Save The Date',
+      quote: 'Love is not about looking at each other,\nbut looking together in the same direction.',
+      scroll: 'scroll',
+    },
+    welcome: {
+      eyebrow: 'Welcome to our wedding',
+      heading: 'We cordially invite you',
+      subtitle: 'To join us in celebrating our marriage',
+      groomSide: "Groom's Family", brideSide: "Bride's Family",
+      groomRole: 'Eldest Son', brideRole: 'Eldest Daughter',
+      mr: 'Mr.', mrs: 'Mrs.',
+    },
+    countdown: {
+      eyebrow: 'Counting down to the big day',
+      days: 'Days', hours: 'Hours', minutes: 'Mins', seconds: 'Secs',
+    },
+    invitation: {
+      heading: 'Holy Matrimony',
+      dayLabel: 'Day', monthLabel: 'Month', yearLabel: 'Year',
+      subtitle: 'Join us to celebrate our marriage',
+      weekday: 'Friday',
+      months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    },
+    calendar: {
+      dows: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+    },
+    venue: {
+      heading: 'Events',
+      subtitle: 'We look forward to seeing you',
+      viewMap: 'View map',
+      events: {
+        ceremony: { label: 'Church Ceremony', timeNote: 'PM' },
+        reception: { label: 'Wedding Reception', timeNote: 'Evening' },
+      },
+    },
+    gallery: {
+      heading: 'Photo Gallery',
+      subtitle: 'Our moments together',
+    },
+    rsvp: {
+      heading: 'RSVP',
+      nameLabel: 'Full name', namePlaceholder: 'Enter your name',
+      phoneLabel: 'Phone number', phonePlaceholder: 'Enter your phone number',
+      sideLabel: 'You are a guest of',
+      groomSide: "Groom's side", brideSide: "Bride's side",
+      attendingLabel: 'Will you attend?',
+      yes: 'Yes, I will be there 🎉', no: "Sadly, I can't make it 💌",
+      guestsLabel: 'Number of guests',
+      messageLabel: 'Message (optional)',
+      messagePlaceholder: 'Send a message to the couple...',
+      submit: 'Send RSVP', sending: 'Sending...',
+      successTitle: 'Thank you!',
+      successMsg: 'We have received your RSVP. See you on our special day!',
+      error: 'Something went wrong. Please try again.',
+    },
+    contact: {
+      heading: 'Contact',
+      subtitle: 'For any inquiries please contact',
+      groom: 'Groom', bride: 'Bride',
+    },
+    closing: { thankYou: 'Thank You' },
+  },
+};

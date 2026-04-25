@@ -8,7 +8,28 @@ export default function MusicPlayer() {
   useEffect(() => {
     const a = audioRef.current;
     if (!a) return;
+
     a.volume = 0.5;
+
+    const tryPlay = async () => {
+      try {
+        await a.play();
+        setPlaying(true);
+      } catch (e) {
+        setPlaying(false);
+        console.warn('Audio blocked:', e);
+      }
+    };
+
+    tryPlay();
+
+    const unlock = () => {
+      if (!audioRef.current || !audioRef.current.paused) return;
+      tryPlay();
+    };
+
+    window.addEventListener('pointerdown', unlock, { once: true });
+    return () => window.removeEventListener('pointerdown', unlock);
   }, []);
 
   const toggle = async () => {
