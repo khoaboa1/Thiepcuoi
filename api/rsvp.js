@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, side, attending, guests, message, submittedAt } = req.body || {};
+  const { name, phone, side, attending, guests, message, submittedAt } = req.body || {};
 
   if (!name || typeof name !== 'string' || name.length > 120) {
     return res.status(400).json({ error: 'Invalid name' });
@@ -33,6 +33,7 @@ export default async function handler(req, res) {
 
   const payload = {
     name: name.trim(),
+    phone: (phone || '').toString().trim().slice(0, 20),
     side, // 'groom' (Nhà Trai) | 'bride' (Nhà Gái)
     attending,
     guests: Number(guests) || 1,

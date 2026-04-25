@@ -4,7 +4,7 @@
  * Setup:
  *   1. Create a new Google Sheet. Rename Sheet1 to "RSVP" (or change SHEET_NAME below).
  *   2. Add header row in row 1:
- *        Submitted At | Name | Side | Attending | Guests | Message | User Agent
+ *        Submitted At | Name | Phone | Side | Attending | Guests | Message | User Agent
  *   3. Extensions → Apps Script → paste this entire file → Save.
  *   4. (Optional) Set a shared secret below AND in your Vercel env (RSVP_SHARED_SECRET).
  *   5. Deploy → New deployment → Type: Web app
@@ -31,6 +31,7 @@ function doPost(e) {
     sheet.appendRow([
       body.submittedAt || new Date().toISOString(),
       body.name || '',
+      body.phone || '',
       sideLabel,
       body.attending || '',
       body.guests || 1,

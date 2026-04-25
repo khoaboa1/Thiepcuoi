@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 export default function RSVPForm() {
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [side, setSide] = useState('groom'); // groom = Nhà Trai, bride = Nhà Gái
   const [attending, setAttending] = useState('yes');
   const [guests, setGuests] = useState(1);
@@ -19,6 +20,7 @@ export default function RSVPForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: name.trim(),
+          phone: phone.trim(),
           side,
           attending,
           guests: Number(guests) || 1,
@@ -74,6 +76,17 @@ export default function RSVPForm() {
             onChange={(e) => setName(e.target.value)}
             required
             placeholder="Nhập tên của bạn"
+            className="mt-1 w-full bg-transparent border-b border-gold/40 focus:border-gold outline-none py-2 text-mocha placeholder:text-mocha/30"
+          />
+        </div>
+
+        <div>
+          <label className="eyebrow text-[10px]">Số điện thoại</label>
+          <input
+            type="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="Nhập số điện thoại"
             className="mt-1 w-full bg-transparent border-b border-gold/40 focus:border-gold outline-none py-2 text-mocha placeholder:text-mocha/30"
           />
         </div>
