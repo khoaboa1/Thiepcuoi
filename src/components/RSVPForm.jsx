@@ -51,6 +51,17 @@ export default function RSVPForm() {
       </motion.h2>
       <div className="divider" />
 
+      <motion.p
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.15 }}
+        className="text-xs text-mocha/60 font-sans tracking-wide mb-6"
+      >
+        {tr.deadlineLabel}{' '}
+        <span className="font-semibold text-gold">07/03/2026</span>
+      </motion.p>
+
       <form onSubmit={submit} className="text-left space-y-5">
         <div>
           <label className="eyebrow text-[10px]">{tr.nameLabel}</label>

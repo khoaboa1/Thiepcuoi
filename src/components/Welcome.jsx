@@ -11,15 +11,17 @@ function FamilyCard({ side, role, name, father, mother, delay, tr, lang }) {
       transition={{ duration: 0.8, delay }}
       className="w-full rounded-xl border border-gold/20 bg-white/60 backdrop-blur px-5 py-6 text-center"
     >
-      <p className="eyebrow">{side}</p>
+      {/* <p className="eyebrow">{side}</p> */}
+      <p className="mt-3 text-[13px] text-mocha/80 leading-6">{tr.mr} <span className="font-medium">{father}</span></p>
+      <p className="text-[13px] text-mocha/80 leading-6">{tr.mrs} <span className="font-medium break-words">{mother}</span></p>
+      <div className="mx-auto my-3 w-10 border-t border-gold/40" />
       {/* New Vietnamese-safe option kept here for quick comparison:
           className={`mt-3 text-xl text-mocha break-words ${lang === 'vi' ? 'font-display-vi tracking-normal' : 'font-display'}`}
       */}
-      <p className="mt-3 font-display text-xl text-mocha break-words">{name}</p>
+      <p className="eyebrow">{side}</p>
+
+      <p className="font-display text-xl text-mocha break-words">{name}</p>
       <p className="mt-1 text-xs italic text-mocha/60 font-serif">{role}</p>
-      <div className="mx-auto my-3 w-10 border-t border-gold/40" />
-      <p className="text-[13px] text-mocha/80 leading-6">{tr.mr} <span className="font-medium">{father}</span></p>
-      <p className="text-[13px] text-mocha/80 leading-6">{tr.mrs} <span className="font-medium break-words">{mother}</span></p>
     </motion.div>
   );
 }

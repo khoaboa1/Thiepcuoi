@@ -55,6 +55,7 @@ export const translations = {
       successTitle: 'Cảm ơn bạn!',
       successMsg: 'Chúng tôi đã nhận được xác nhận của bạn. Hẹn gặp bạn trong ngày trọng đại!',
       error: 'Có lỗi xảy ra. Vui lòng thử lại sau ít phút.',
+      deadlineLabel: 'Vui lòng xác nhận trước ngày',
     },
     contact: {
       heading: 'Liên hệ',
@@ -120,6 +121,7 @@ export const translations = {
       successTitle: 'Thank you!',
       successMsg: 'We have received your RSVP. See you on our special day!',
       error: 'Something went wrong. Please try again.',
+      deadlineLabel: 'Please RSVP by',
     },
     contact: {
       heading: 'Contact',
