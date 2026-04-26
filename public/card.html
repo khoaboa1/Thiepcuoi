@@ -1,0 +1,830 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiệp Cưới — Hải Đăng & Mai Thy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    @font-face {
+      font-family: 'DFVNLeagueScript';
+      src: url('/fonts/DFVNLeagueScript.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "DFVNPencerio";
+      src: url('/fonts/DFVNPencerio.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #bdb3a8;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      padding: 24px 16px 48px;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .controls p { font-size: 11px; color: #6b5d52; letter-spacing: 0.06em; margin-bottom: 10px; }
+    .btn {
+      background: #6B4F3B;
+      color: #E8DDD0;
+      border: none;
+      padding: 9px 28px;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    .btn:hover { background: #5a4130; }
+
+    /* ── Card wrapper ── */
+    .card {
+      width: 36cm;
+      height: 24cm;
+      background: #faf8f4;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      position: relative;
+      box-shadow: 0 12px 56px rgba(0,0,0,0.22);
+      overflow: hidden;
+    }
+
+    /* Outer gold border frame */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 6mm;
+      border: 0.7pt solid rgba(184,151,102,0.5);
+      pointer-events: none;
+      z-index: 20;
+    }
+    .card::after {
+      content: '';
+      position: absolute;
+      inset: 8.5mm;
+      border: 0.3pt solid rgba(184,151,102,0.28);
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    /* ── Panels ── */
+    .panel {
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-1 { width: 8cm;  flex-shrink: 0; }
+    .panel-2 { width: 14cm; flex-shrink: 0; }
+    .panel-3 { width: 14cm; flex-shrink: 0; }
+
+    /* Fold / separator lines */
+    .fold-line {
+      width: 0;
+      height: 100%;
+      border-left: 1pt dashed rgba(184,151,102,0.55);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 15;
+    }
+    /* Small fold-mark triangles at top & bottom of each fold */
+    .fold-line::before,
+    .fold-line::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+    }
+    .fold-line::before {
+      top: 0;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-top: 5px solid rgba(184,151,102,0.5);
+    }
+    .fold-line::after {
+      bottom: 0;
+      border-left: 3px solid transparent;
+      border-right: 3px solid transparent;
+      border-bottom: 5px solid rgba(184,151,102,0.5);
+    }
+
+    /* ── Panel inner padding ── */
+    .p-inner {
+      padding: 12mm 8mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .panel-1 .p-inner { padding: 10mm 6mm; text-align: center; }
+    .panel-2 .p-inner { padding: 12mm 10mm; align-items: flex-start; text-align: left; }
+    .panel-3 .p-inner { padding: 12mm 10mm; align-items: center; text-align: center; }
+
+    /* ── Corner botanical SVG ── */
+    .corner-svg {
+      position: absolute;
+      width: 28mm;
+      height: 28mm;
+      opacity: 0.5;
+      z-index: 1;
+    }
+    .c-tl { top: 0; left: 0; }
+    .c-tr { top: 0; right: 0; transform: scaleX(-1); }
+    .c-bl { bottom: 0; left: 0; transform: scaleY(-1); }
+    .c-br { bottom: 0; right: 0; transform: scale(-1); }
+
+    /* ── PANEL 1 styles ── */
+    .wreath-wrap {
+      width: 5.5cm;
+      height: 5.5cm;
+      position: relative;
+      margin: auto auto 4mm;
+    }
+    .wreath-date {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .w-day   { font-family: 'Philosopher', serif; font-size: 20pt; color: #6B4F3B; line-height: 1; }
+    .w-slash { font-family: 'Cormorant Garamond', serif; font-size: 9pt; color: #B89766; margin: 0.5mm 0; letter-spacing: 0.1em; }
+    .w-year  { font-family: 'Philosopher', serif; font-size: 13pt; color: #6B4F3B; }
+
+    .thiep-moi {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 6pt;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: #B89766;
+      margin-bottom: 3mm;
+    }
+
+    .thank-you-block {
+      margin-top: auto;
+      text-align: center;
+    }
+    .thank-you-block .ty-script {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 16pt;
+      color: #6B4F3B;
+      display: block;
+    }
+    .thank-you-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 7.5pt;
+      color: rgba(107,79,59,0.65);
+      line-height: 1.8;
+      margin-top: 2mm;
+    }
+
+    /* ── PANEL 2 styles ── */
+    .section-label {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 10pt;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #B89766;
+      margin-bottom: 2mm;
+    }
+
+    .family-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0 4mm;
+      width: 100%;
+      margin-bottom: 4mm;
+    }
+    .fam-col p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10pt;
+      color: #6B4F3B;
+      line-height: 1.75;
+    }
+    .fam-col .addr {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 10pt;
+      color: rgba(107,79,59,0.55);
+      line-height: 1.6;
+      margin-top: 1mm;
+    }
+    .fam-vline {
+      width: 0.4pt;
+      background: rgba(184,151,102,0.4);
+      align-self: stretch;
+    }
+
+    .invite-title {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 7pt;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #6B4F3B;
+      width: 100%;
+      text-align: center;
+      margin: 1mm 0 2mm;
+    }
+    .dotline {
+      width: 100%;
+      border-bottom: 0.5pt dotted rgba(107,79,59,0.35);
+      margin: 2mm 0;
+    }
+
+    .invite-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9pt;
+      color: #6B4F3B;
+      line-height: 1.8;
+      width: 100%;
+    }
+    .invite-body strong { font-weight: 600; }
+    /* .couple-names-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22pt;
+      color: #6B4F3B;
+      text-align: center;
+      width: 100%;
+      line-height: 1.15;
+      margin: 3mm 0 2mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4mm;
+      flex-wrap: wrap;
+    } */
+    .couple-names-main {
+      width: 100%;
+      margin: 3mm 0 2mm;
+      display: grid;
+      grid-template-columns: auto 6mm auto;
+      justify-content: center;
+      align-items: center;
+      column-gap: 4mm;
+      row-gap: 1mm;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22pt;
+      color: #6B4F3B;
+      text-align: center;
+      line-height: 1.05;
+    }
+
+    .couple-names-main .amp-gold {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14pt;
+      color: #B89766;
+      line-height: 1;
+    }
+    /* .amp-gold {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14pt;
+      color: #B89766;
+      line-height: 1;
+    } */
+     .photo-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3mm;
+      margin: 5mm 0 3mm;
+    }
+
+    .photo-card {
+      height: 58mm;
+      overflow: hidden;
+      border-radius: 2mm;
+      background: rgba(184,151,102,0.08);
+      border: 0.6pt solid rgba(184,151,102,0.28);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.95);
+    }
+    .event-section {
+      width:100%;
+      margin-top:auto;
+    }
+    .event-block {
+      width: 100%;
+      margin-top: 3mm;
+      transform:translateY(-8mm);
+    }
+    .event-eyebrow {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 8pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B89766;
+      margin-bottom: 0.5mm;
+    }
+    .event-venue {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15pt;
+      color: #6B4F3B;
+    }
+    .event-addr {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 8pt;
+      color: rgba(107,79,59,0.6);
+      line-height: 1.6;
+    }
+
+    /* ── PANEL 3 styles ── */
+    .cal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 3mm;
+    }
+    .cal-month-script {
+      font-family: 'DFVNPencerio', 'Cormorant Garamond', serif;
+      font-style: normal;
+      font-size: 24pt;
+      color: #49301e;
+      line-height: 0.9;
+      text-align: left;
+    }
+    .cal-month-script span {
+      display: block;
+      font-size: 32pt;
+      color: #B89766;
+      line-height: 0.85;
+    }
+    .couple-label-right {
+      text-align: right;
+      padding-top: 1mm;
+    }
+    .couple-label-right p {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 10pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #6B4F3B;
+      line-height: 2;
+    }
+    .couple-label-right .amp-sm {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 8pt;
+      color: #B89766;
+    }
+
+    /* Calendar grid */
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1.5mm 0;
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 7pt;
+      text-align: center;
+      color: #6B4F3B;
+      width: 100%;
+    }
+    .cal-grid .hd {
+      font-size: 5.5pt;
+      color: #B89766;
+      font-weight: 600;
+      padding-bottom: 1.5mm;
+      border-bottom: 0.4pt solid rgba(184,151,102,0.35);
+    }
+    .cal-grid .empty { color: transparent; }
+    .cal-grid .today {
+      position: relative;
+      font-weight: 400;
+      color: #6B4F3B;
+      z-index: 1;
+    }
+
+    .cal-grid .today::before {
+      content: '♡';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -56%) translateY(0.6mm);
+      font-size: 25pt;
+      color: #C96A6A;
+      line-height: 1;
+      z-index: -1;
+      
+    }
+
+    /* Bottom date box */
+    .date-box {
+      width: 100%;
+      margin-top: auto;
+      border: 0.6pt solid rgba(184,151,102,0.45);
+      display: grid;
+      grid-template-columns: 1fr 1.4fr 1fr;
+      overflow: hidden;
+      border-radius: 1.5mm;
+    }
+    .db-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3mm 2mm;
+    }
+    .db-cell.dark { background: #6B4F3B; }
+    .db-cell + .db-cell { border-left: 0.5pt solid rgba(184,151,102,0.35); }
+    .db-label {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 5pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #B89766;
+      margin-bottom: 0.5mm;
+    }
+    .db-cell.dark .db-label { color: rgba(232,221,208,0.65); }
+    .db-num {
+      font-family: 'Philosopher', serif;
+      font-size: 18pt;
+      color: #6B4F3B;
+      line-height: 1;
+      font-weight: 700;
+    }
+    .db-cell.dark .db-num { color: #E8DDD0; }
+    .db-sub {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      font-size: 5pt;
+      color: rgba(107,79,59,0.55);
+      letter-spacing: 0.05em;
+      margin-top: 0.5mm;
+    }
+
+    /* ── Shared dividers ── */
+    .div-line {
+      width: 100%;
+      height: 0.4pt;
+      background: linear-gradient(to right, transparent, rgba(184,151,102,0.5), transparent);
+      margin: 3mm 0;
+    }
+    .div-diamond {
+      display: flex;
+      align-items: center;
+      gap: 2mm;
+      width: 100%;
+      margin: 3mm 0;
+    }
+    .div-diamond .dl { flex: 1; height: 0.4pt; background: rgba(107,79,59,0.2); }
+    .div-diamond .dd {
+      width: 2mm; height: 2mm;
+      background: #B89766;
+      transform: rotate(45deg);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    .closing-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15pt;
+      color: rgba(107,79,59,0.7);
+      line-height: 1.8;
+      text-align: center;
+      margin-top: 3mm;
+    }
+    .closing-sig {
+      font-family: 'Philosopher', serif;
+      font-size: 9pt;
+      color: #6B4F3B;
+      margin-top: 1.5mm;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: white; padding: 0; }
+      .controls { display: none; }
+      .card { box-shadow: none; margin: 0; }
+      @page { size: 36cm 24cm; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="controls">
+  <p>Kích thước: 36 × 24 cm &nbsp;·&nbsp; Gồm 3 phần: 8cm | 14cm | 14cm &nbsp;·&nbsp; In trên giấy theo kích thước tùy chỉnh</p>
+  <button class="btn" onclick="window.print()">🖨 &nbsp;In Thiệp / Print</button>
+</div>
+
+<div class="card">
+
+  <!-- ══════════════════════════════
+       PANEL 1  —  8cm  (left flap)
+  ══════════════════════════════ -->
+  <div class="panel panel-1">
+
+    <!-- Corner botanicals for panel 1 -->
+    <svg class="corner-svg c-tl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.65" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.55" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.6" transform="rotate(-55 53 38)"/>
+      <ellipse cx="69" cy="23" rx="9" ry="3.5" fill="#8aab82" opacity="0.5" transform="rotate(-60 69 23)"/>
+      <circle cx="80" cy="12" r="2.5" fill="#B89766" opacity="0.55"/>
+      <circle cx="85" cy="6" r="2" fill="#B89766" opacity="0.4"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.8"/>
+      <circle cx="9" cy="73" r="2" fill="white" opacity="0.6"/>
+    </svg>
+    <svg class="corner-svg c-br" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.65" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.55" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.6" transform="rotate(-55 53 38)"/>
+      <ellipse cx="69" cy="23" rx="9" ry="3.5" fill="#8aab82" opacity="0.5" transform="rotate(-60 69 23)"/>
+      <circle cx="80" cy="12" r="2.5" fill="#B89766" opacity="0.55"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.8"/>
+    </svg>
+
+    <div class="p-inner">
+
+      <!-- Wreath with date -->
+      <div class="wreath-wrap">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+          <circle cx="100" cy="100" r="72" stroke="#8aab82" stroke-width="0.9" stroke-dasharray="3.5 2.5" opacity="0.45"/>
+          <!-- TOP -->
+          <ellipse cx="100" cy="28" rx="8" ry="3" fill="#8aab82" opacity="0.65"/>
+          <ellipse cx="115" cy="32" rx="7" ry="2.8" fill="#6b9163" opacity="0.55" transform="rotate(22 115 32)"/>
+          <ellipse cx="85"  cy="32" rx="7" ry="2.8" fill="#a3c29a" opacity="0.55" transform="rotate(-22 85 32)"/>
+          <circle cx="122"  cy="37" r="2"   fill="#B89766" opacity="0.55"/>
+          <circle cx="78"   cy="37" r="2"   fill="#B89766" opacity="0.55"/>
+          <circle cx="100"  cy="22" r="2.2" fill="white" opacity="0.85"/>
+          <!-- TOP-RIGHT -->
+          <ellipse cx="151" cy="44" rx="8" ry="3" fill="#8aab82" opacity="0.6" transform="rotate(45 151 44)"/>
+          <ellipse cx="163" cy="56" rx="7" ry="2.8" fill="#6b9163" opacity="0.5" transform="rotate(60 163 56)"/>
+          <ellipse cx="140" cy="34" rx="6" ry="2.5" fill="#a3c29a" opacity="0.5" transform="rotate(30 140 34)"/>
+          <circle cx="169" cy="48" r="2" fill="white" opacity="0.8"/>
+          <!-- RIGHT -->
+          <ellipse cx="172" cy="100" rx="8" ry="3" fill="#8aab82" opacity="0.65" transform="rotate(90 172 100)"/>
+          <ellipse cx="169" cy="116" rx="7" ry="2.8" fill="#6b9163" opacity="0.55" transform="rotate(105 169 116)"/>
+          <ellipse cx="169" cy="84"  rx="7" ry="2.8" fill="#a3c29a" opacity="0.55" transform="rotate(75 169 84)"/>
+          <circle cx="178"  cy="100" r="2.2" fill="white" opacity="0.85"/>
+          <!-- BOTTOM-RIGHT -->
+          <ellipse cx="151" cy="156" rx="8" ry="3" fill="#8aab82" opacity="0.6" transform="rotate(135 151 156)"/>
+          <ellipse cx="138" cy="168" rx="7" ry="2.8" fill="#6b9163" opacity="0.5" transform="rotate(150 138 168)"/>
+          <circle cx="162" cy="163" r="2" fill="#B89766" opacity="0.55"/>
+          <!-- BOTTOM -->
+          <ellipse cx="100" cy="172" rx="8" ry="3" fill="#8aab82" opacity="0.65" transform="rotate(180 100 172)"/>
+          <ellipse cx="116" cy="169" rx="7" ry="2.8" fill="#6b9163" opacity="0.55" transform="rotate(160 116 169)"/>
+          <ellipse cx="84"  cy="169" rx="7" ry="2.8" fill="#a3c29a" opacity="0.55" transform="rotate(200 84 169)"/>
+          <circle cx="100"  cy="179" r="2.2" fill="white" opacity="0.85"/>
+          <!-- BOTTOM-LEFT -->
+          <ellipse cx="49" cy="156" rx="8" ry="3" fill="#8aab82" opacity="0.6" transform="rotate(225 49 156)"/>
+          <ellipse cx="37" cy="144" rx="7" ry="2.8" fill="#6b9163" opacity="0.5" transform="rotate(210 37 144)"/>
+          <circle cx="38" cy="163" r="2" fill="#B89766" opacity="0.55"/>
+          <!-- LEFT -->
+          <ellipse cx="28" cy="100" rx="8" ry="3" fill="#8aab82" opacity="0.65" transform="rotate(270 28 100)"/>
+          <ellipse cx="31" cy="84"  rx="7" ry="2.8" fill="#6b9163" opacity="0.55" transform="rotate(255 31 84)"/>
+          <ellipse cx="31" cy="116" rx="7" ry="2.8" fill="#a3c29a" opacity="0.55" transform="rotate(285 31 116)"/>
+          <circle cx="22" cy="100" r="2.2" fill="white" opacity="0.85"/>
+          <!-- TOP-LEFT -->
+          <ellipse cx="49" cy="44" rx="8" ry="3" fill="#8aab82" opacity="0.6" transform="rotate(315 49 44)"/>
+          <ellipse cx="37" cy="56" rx="7" ry="2.8" fill="#6b9163" opacity="0.5" transform="rotate(300 37 56)"/>
+          <ellipse cx="60" cy="34" rx="6" ry="2.5" fill="#a3c29a" opacity="0.5" transform="rotate(330 60 34)"/>
+          <circle cx="31" cy="48" r="2" fill="white" opacity="0.8"/>
+        </svg>
+        <div class="wreath-date">
+          <span class="w-day">31</span>
+          <span class="w-slash">/ 07 /</span>
+          <span class="w-year">2026</span>
+        </div>
+      </div>
+
+      <p class="thiep-moi">Thiệp Mời</p>
+
+      <div style="height:0.4pt;width:80%;background:rgba(184,151,102,0.4);margin:3mm auto;"></div>
+
+      <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:9pt;color:rgba(107,79,59,0.6);line-height:1.7;">
+        Thứ Sáu<br>31 tháng 07<br>năm 2026
+      </p>
+
+      <!-- Thank you block at bottom -->
+      <div class="thank-you-block">
+        <div style="height:0.4pt;width:70%;background:rgba(184,151,102,0.35);margin:4mm auto 3mm;"></div>
+        <span class="ty-script">Thank you</span>
+        <!-- <p style="margin-top:2mm;">
+          Sự hiện diện của Quý khách<br>
+          là niềm vinh hạnh<br>
+          cho gia đình chúng tôi.
+        </p> -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Fold line 1 -->
+  <div class="fold-line"></div>
+
+  <!-- ══════════════════════════════
+       PANEL 2  —  14cm  (main body)
+  ══════════════════════════════ -->
+  <div class="panel panel-2">
+
+    <svg class="corner-svg c-tl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.55" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.45" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.5" transform="rotate(-55 53 38)"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.7"/>
+    </svg>
+    <svg class="corner-svg c-br" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.55" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.45" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.5" transform="rotate(-55 53 38)"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.7"/>
+    </svg>
+
+    <div class="p-inner">
+
+      <!-- Family section -->
+      <p class="section-label" style="align-self:center;margin-bottom:3mm;">Gia Đình Hai Bên</p>
+
+      <div class="family-grid">
+        <div class="fam-col">
+          <p class="section-label">Nhà Trai</p>
+          <p>Ông Lê Cao Sơn<br>Bà Đoàn Thu Hiền</p>
+          <p class="addr">Pensacola, Florida, USA</p>
+        </div>
+        <div class="fam-vline"></div>
+        <div class="fam-col" style="text-align:right;">
+          <p class="section-label">Nhà Gái</p>
+          <p>Ông Trần Tấn Tú<br>Bà Dương Thị Kim Thanh</p>
+          <p class="addr">Pensacola, Florida, USA</p>
+        </div>
+      </div>
+
+      <div class="div-diamond"><div class="dl"></div><div class="dd"></div><div class="dl"></div></div>
+
+      <!-- Invitation text -->
+      <p class="invite-title">Trân Trọng Kính Mời</p>
+      <div class="dotline"></div>
+
+      <div class="invite-body" style="text-align:center;margin-top:1mm;">
+        <p>TỚI DỰ BUỔI TIỆC CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI</p>
+      </div>
+
+      <div class="couple-names-main">
+        <span style="grid-column:1;grid-row:1;">Lê</span>
+        <span style="grid-column:3;grid-row:1;">Trần</span>
+
+        <span style="grid-column:1;grid-row:2;">Hải</span>
+        <span class="amp-gold" style="grid-column:2;grid-row:2;">&amp;</span>
+        <span style="grid-column:3;grid-row:2;">Mai</span>
+
+        <span style="grid-column:1;grid-row:3;">Đăng</span>
+        <span style="grid-column:3;grid-row:3;">Thy</span>
+      </div>
+      <div class="photo-grid">
+        <div class="photo-card">
+          <img src="/card-image/_UII5662.jpg" alt="Wedding photo 1">
+        </div>
+        <div class="photo-card">
+          <img src="/card-image/_UII5892.jpg" alt="Wedding photo 2">
+        </div>
+        <div class="photo-card">
+          <img src="/card-image/_UII5987.jpg" alt="Wedding photo 3">
+        </div>
+      </div>
+      <div class="div-line"></div>
+        <div class = "event-section">
+          <div class="event-block">
+          <p class="event-eyebrow">Lễ Cưới Tại Nhà Thờ &nbsp;·&nbsp; 14:00 Chiều</p>
+          <p class="event-venue">St. Mary Catholic Church</p>
+          <p class="event-addr">401 Van Pelt Ln, Pensacola, FL 32505</p>
+        </div>
+      <!-- Reception -->
+        <div class="event-block">
+          <p class="event-eyebrow">Tiệc Cưới &nbsp;·&nbsp; 18:00 Tối</p>
+          <p class="event-venue">The Wharf Fish &amp; Oyster Co.</p>
+          <p class="event-addr">400 Quietwater Beach Rd, Gulf Breeze, FL 32561</p>
+        </div>
+      </div>
+      <div class="div-diamond" style="margin-top:auto;"><div class="dl"></div><div class="dd"></div><div class="dl"></div></div>
+    </div>
+  </div>
+
+  <!-- Fold line 2 -->
+  <div class="fold-line"></div>
+
+  <!-- ══════════════════════════════
+       PANEL 3  —  14cm  (calendar)
+  ══════════════════════════════ -->
+  <div class="panel panel-3">
+
+    <svg class="corner-svg c-tr" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.55" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.45" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.5" transform="rotate(-55 53 38)"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.7"/>
+    </svg>
+    <svg class="corner-svg c-bl" viewBox="0 0 90 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 85 Q25 55 50 35 Q68 20 85 5" stroke="#8aab82" stroke-width="1.3" stroke-linecap="round"/>
+      <ellipse cx="20" cy="70" rx="11" ry="4.5" fill="#8aab82" opacity="0.55" transform="rotate(-45 20 70)"/>
+      <ellipse cx="36" cy="54" rx="11" ry="4.5" fill="#6b9163" opacity="0.45" transform="rotate(-50 36 54)"/>
+      <ellipse cx="53" cy="38" rx="10" ry="4" fill="#a3c29a" opacity="0.5" transform="rotate(-55 53 38)"/>
+      <circle cx="14" cy="78" r="3" fill="white" opacity="0.7"/>
+    </svg>
+
+    <div class="p-inner">
+
+      <!-- Calendar header -->
+      <div class="cal-header">
+        <div>
+          <div class="cal-month-script">Tháng<span>7</span></div>
+        </div>
+        <div class="couple-label-right">
+          <p>HẢI ĐĂNG</p>
+          <p class="amp-sm">&amp;</p>
+          <p>MAI THY</p>
+        </div>
+      </div>
+
+      <!-- Calendar grid: Jul 2026, starts Wednesday -->
+      <div class="cal-grid">
+        <div class="hd">MO</div><div class="hd">TU</div><div class="hd">WE</div>
+        <div class="hd">TH</div><div class="hd">FR</div><div class="hd">SA</div><div class="hd">SU</div>
+
+        <div class="empty">·</div><div class="empty">·</div><div>1</div>
+        <div>2</div><div>3</div><div>4</div><div>5</div>
+
+        <div>6</div><div>7</div><div>8</div>
+        <div>9</div><div>10</div><div>11</div><div>12</div>
+
+        <div>13</div><div>14</div><div>15</div>
+        <div>16</div><div>17</div><div>18</div><div>19</div>
+
+        <div>20</div><div>21</div><div>22</div>
+        <div>23</div><div>24</div><div>25</div><div>26</div>
+
+        <div>27</div><div>28</div><div>29</div>
+        <div>30</div><div class="today">31</div>
+        <div class="empty">·</div><div class="empty">·</div>
+      </div>
+
+      <div class="div-diamond" style="margin:4mm 0;"><div class="dl"></div><div class="dd"></div><div class="dl"></div></div>
+
+      <!-- Date highlight box -->
+      <!-- <div class="date-box">
+        <div class="db-cell dark">
+          <span class="db-label">Tháng</span>
+          <span class="db-num" style="font-size:16pt;">07</span>
+        </div>
+        <div class="db-cell" style="text-align:center;">
+          <span class="db-label">Ngày</span>
+          <span style="font-family:'Philosopher',serif;font-size:26pt;color:#6B4F3B;line-height:1;font-weight:700;">31</span>
+          <span class="db-sub">Thứ Sáu · Friday</span>
+        </div>
+        <div class="db-cell dark">
+          <span class="db-label">Năm</span>
+          <span class="db-num" style="font-size:16pt;">2026</span>
+        </div>
+      </div> -->
+
+      <!-- Closing -->
+       <div style="margin-top:auto; width:100%; text-align:center; padding-top:6mm;">
+          <p class="closing-text" style="margin-top:4mm;">
+          Lời cảm ơn<br>
+          Chúng tôi rất trân trọng sự có mặt của Quý vị trong đám cưới của gia đình. Sự hiện diện, tình yêu và những lời chúc tốt đẹp của Quý vị đã làm cho ngày đặc biệt của chúng tôi thêm ý nghĩa và trọn vẹn.
+          </p>
+          <!-- <p class="closing-sig">Hải Đăng &amp; Mai Thy</p> -->
+       </div>
+      
+
+    </div>
+  </div>
+
+</div><!-- /card -->
+
+</body>
+</html>

@@ -3,6 +3,7 @@ import { wedding } from '../config.js';
 
 export default function MusicPlayer() {
   const audioRef = useRef(null);
+  const startAppliedRef = useRef(false);
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
@@ -11,8 +12,20 @@ export default function MusicPlayer() {
 
     a.volume = 0.5;
 
+    const applyStartAt = () => {
+      if (startAppliedRef.current) return;
+      if (typeof wedding.music.startAt !== 'number') return;
+
+      const duration = Number.isFinite(a.duration) ? a.duration : null;
+      const target = duration ? Math.min(wedding.music.startAt, Math.max(duration - 0.25, 0)) : wedding.music.startAt;
+
+      a.currentTime = Math.max(target, 0);
+      startAppliedRef.current = true;
+    };
+
     const tryPlay = async () => {
       try {
+        applyStartAt();
         await a.play();
         setPlaying(true);
       } catch (e) {
@@ -21,7 +34,16 @@ export default function MusicPlayer() {
       }
     };
 
-    tryPlay();
+    const handleLoadedMetadata = () => {
+      applyStartAt();
+      tryPlay();
+    };
+
+    if (a.readyState >= 1) {
+      handleLoadedMetadata();
+    } else {
+      a.addEventListener('loadedmetadata', handleLoadedMetadata, { once: true });
+    }
 
     const unlock = () => {
       if (!audioRef.current || !audioRef.current.paused) return;
@@ -29,7 +51,10 @@ export default function MusicPlayer() {
     };
 
     window.addEventListener('pointerdown', unlock, { once: true });
-    return () => window.removeEventListener('pointerdown', unlock);
+    return () => {
+      a.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      window.removeEventListener('pointerdown', unlock);
+    };
   }, []);
 
   const toggle = async () => {
@@ -40,6 +65,10 @@ export default function MusicPlayer() {
       setPlaying(false);
     } else {
       try {
+        if (!startAppliedRef.current && typeof wedding.music.startAt === 'number') {
+          a.currentTime = Math.max(wedding.music.startAt, 0);
+          startAppliedRef.current = true;
+        }
         await a.play();
         setPlaying(true);
       } catch (e) {

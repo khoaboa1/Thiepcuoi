@@ -56,15 +56,16 @@ export const wedding = {
     // Drop your audio file at /public/music/beautiful-in-white.mp3
     // and toggle enabled to true.
     enabled: true,
-    src: '/music/beautiful-in-white.mp3',
+    src: '/music/Nhac.mp3',
     title: 'Beautiful in White — Westlife',
+    startAt: 77,
   },
   // Photo album — drop images into /public/albums/ then list filenames here.
   // Supported formats: jpg, jpeg, png, webp
   // Example: gallery: ['photo1.jpg', 'photo2.jpg', 'photo3.jpg']
   gallery: [
     '_UII5170.jpg',
-    '_UII5179.jpg',
+    '_UII5797.jpg',
     '_UII5234.jpg',
     '_UII5715.jpg',
     '_UII5756.jpg',

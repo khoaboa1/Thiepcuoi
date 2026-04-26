@@ -19,7 +19,7 @@ export default function Hero() {
           className="w-full h-full object-cover object-center"
         />
         {/* Gradient overlay — light at top, stronger at bottom for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/5 via-transparent to-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/70" />
       </div>
 
       {/* Bottom text panel */}
