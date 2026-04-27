@@ -22,11 +22,11 @@ export const wedding = {
   // hour/minute drive the countdown — set to the earliest event of the day.
   date: {
     year: 2026,
-    month: 7,
-    day: 31,
+    month: 8,
+    day: 1,
     hour: 14,
     minute: 0,
-    weekday: 'Thứ Sáu',
+    weekday: 'Thứ Bảy',
   },
   events: [
     {
