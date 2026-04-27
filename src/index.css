@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'FZAlphaBrights';
+  src: url('/fonts/FzAlphaBrights.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MadinahAuthentic';
+  src: url('/fonts/FzMadinahAuthentic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family:'FZ-Algeron';
+  src:url('/fonts/Fz-Algeron.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face {
+  font-family:'FZFashion';
+  src:url('/fonts/FzFashionSignature.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face {
+  font-family:'FZGallerya';
+  src:url('/fonts/FzGallerya.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
+@font-face {
+  font-family:'FzAghita';
+  src:url('/fonts/FzAghita.ttf') format('truetype');
+  font-weight:normal;
+  font-style:normal;
+}
 :root {
   color-scheme: light;
 }
@@ -42,9 +79,15 @@ body::before {
     @apply uppercase tracking-[0.1em] text-[11px] font-medium text-gold;
   }
   .heading {
-    @apply font-display text-3xl sm:text-4xl tracking-wide text-mocha;
+    @apply text-3xl sm:text-4xl tracking-wide text-mocha;
+    font-family: 'FzAghita', Georgia, serif;
   }
   .divider {
     @apply mx-auto my-6 w-16 border-t border-gold/40;
   }
+}
+
+/* Force FzAghita on all font-display usages */
+.font-display {
+  font-family: 'FzAghita', Georgia, serif !important;
 }

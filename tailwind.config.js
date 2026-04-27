@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         sans: ['"Be Vietnam Pro"', 'system-ui', 'sans-serif'],
-        display: ['"Philosopher"', 'Georgia', 'serif'],
+        display: ['"FzAghita"', 'Georgia', 'serif'],
+        hero: ['"FZAlphaBrights"', 'Georgia'],
         'display-vi': ['"Cormorant Garamond"', '"Be Vietnam Pro"', 'Georgia', 'serif'],
         serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
       },

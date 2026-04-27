@@ -2,7 +2,7 @@
 
 export const wedding = {
   groom: {
-    name: 'HẢI ĐĂNG',
+    name: 'Hải Đăng',
     fullName: 'Lê Hải Đăng',
     father: 'Lê Cao Sơn',
     mother: 'Đoàn Thu Hiền',
@@ -11,7 +11,7 @@ export const wedding = {
     photo: { src: '/images/couple_groom.jpg' },
   },
   bride: {
-    name: 'MAI THY',
+    name: 'Mai Thy',
     fullName: 'Trần Mai Thy',
     father: 'Trần Tấn Tú',
     mother: 'Dương Thị Kim Thanh',

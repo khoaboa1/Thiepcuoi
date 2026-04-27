@@ -40,7 +40,8 @@ export default function Hero() {
         {/* New Vietnamese-safe option kept here for quick comparison:
             className={`${lang === 'vi' ? 'font-display-vi tracking-normal' : 'font-display tracking-wider'} text-5xl sm:text-6xl text-white leading-tight drop-shadow-md`}
         */}
-        <h1 className="relative font-display text-5xl sm:text-6xl text-white leading-tight tracking-wider [text-shadow:0_3px_18px_rgba(0,0,0,0.55),0_1px_2px_rgba(0,0,0,0.35)]">
+        <h1 className="relative text-5xl sm:text-6xl text-white leading-tight tracking-wider [text-shadow:0_3px_18px_rgba(0,0,0,0.55),0_1px_2px_rgba(0,0,0,0.35)]"
+            style={{ fontFamily: "'FZFashion', Georgia, serif", textTransform: 'none' }}>
           {wedding.groom.name}
           <span className="block font-serif italic text-3xl sm:text-4xl my-2 text-gold">&</span>
           {wedding.bride.name}
