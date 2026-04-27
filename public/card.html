@@ -21,6 +21,26 @@
       font-weight: normal;
       font-style: normal;
     }
+    @font-face {
+      font-family: 'FzAghita';
+      src: url('/fonts/FzAghita.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'FZFashion';
+      src: url('/fonts/FzFashionSignature.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    /* Thin override for FzAghita wherever used */
+    .couple-names-main,
+    .couple-label-right p {
+      font-weight: 50;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: 0.05em;
+    }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -274,26 +294,33 @@
       gap: 4mm;
       flex-wrap: wrap;
     } */
-    .couple-names-main {
-      width: 100%;
-      margin: 3mm 0 2mm;
+    /* OLD grid layout — kept for reference
+    .couple-names-main-grid {
       display: grid;
       grid-template-columns: auto 6mm auto;
       justify-content: center;
       align-items: center;
       column-gap: 4mm;
       row-gap: 1mm;
-      font-family: 'Cormorant Garamond', serif;
+      line-height: 1.05;
+    } */
+    .couple-names-main {
+      width: 100%;
+      margin: 3mm 0 2mm;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 5mm;
+      font-family: 'FzAghita', Georgia, serif;
       font-size: 22pt;
       color: #6B4F3B;
       text-align: center;
-      line-height: 1.05;
+      line-height: 1.15;
+      flex-wrap: wrap;
     }
 
-    .couple-names-main .amp-gold {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 14pt;
+    .amp-gold {
       color: #B89766;
       line-height: 1;
     }
@@ -384,10 +411,10 @@
       padding-top: 1mm;
     }
     .couple-label-right p {
-      font-family: 'Be Vietnam Pro', sans-serif;
+      font-family: 'FzAghita', Georgia, serif;
       font-size: 10pt;
       letter-spacing: 0.2em;
-      text-transform: uppercase;
+      text-transform: none;
       color: #6B4F3B;
       line-height: 2;
     }
@@ -693,6 +720,7 @@
         <p>TỚI DỰ BUỔI TIỆC CHUNG VUI CÙNG GIA ĐÌNH CHÚNG TÔI</p>
       </div>
 
+      <!-- OLD vertical grid layout — commented out, not deleted
       <div class="couple-names-main">
         <span style="grid-column:1;grid-row:1;">Lê</span>
         <span style="grid-column:3;grid-row:1;">Trần</span>
@@ -703,6 +731,32 @@
 
         <span style="grid-column:1;grid-row:3;">Đăng</span>
         <span style="grid-column:3;grid-row:3;">Thy</span>
+      </div>
+      -->
+
+      <!-- NEW horizontal layout -->
+      <div class="couple-names-main">
+
+        <!-- Groom — shifted up -->
+        <div style="display:flex;flex-direction:column;align-items:center;transform:translateY(-3mm);">
+          <span style="font-family:'FzAghita',Georgia,serif;font-size:22pt;color:#6B4F3B;font-weight:100;">Lê Hải Đăng</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:8pt;
+                       color:rgba(107,79,59,0.6);margin-top:0.3mm;letter-spacing:0.05em;">
+            (Trưởng Nam)
+          </span>
+        </div>
+
+        <span class="amp-gold" style="font-family:'FZFashion',serif;font-style:italic;font-size:30pt;color:#B89766;line-height:1;">and</span>
+
+        <!-- Bride — shifted down -->
+        <div style="display:flex;flex-direction:column;align-items:center;transform:translateY(3mm);">
+          <span style="font-family:'FzAghita',Georgia,serif;font-size:22pt;color:#6B4F3B;font-weight:100;">Trần Mai Thy</span>
+          <span style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:8pt;
+                       color:rgba(107,79,59,0.6);margin-top:0.3mm;letter-spacing:0.05em;">
+            (Trưởng Nữ)
+          </span>
+        </div>
+
       </div>
       <div class="photo-grid">
         <div class="photo-card">
