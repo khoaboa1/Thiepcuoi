@@ -22,7 +22,7 @@ export const translations = {
       dayLabel: 'Ngày', monthLabel: 'Tháng', yearLabel: 'Năm',
       subtitle: 'Tham dự tiệc mừng lễ thành hôn của chúng tôi',
       weekday: 'Thứ Sáu',
-      months: ['Một','Hai','Ba','Tư','Năm','Sáu','7','Tám','Chín','Mười','Mười một','Mười hai'],
+      months: ['Một','Hai','Ba','Tư','Năm','Sáu','7','8','Chín','Mười','Mười một','Mười hai'],
     },
     calendar: {
       dows: ['CN','T2','T3','T4','T5','T6','T7'],
