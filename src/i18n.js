@@ -8,7 +8,7 @@ export const translations = {
     welcome: {
       eyebrow: 'Welcome to our wedding',
       heading: 'Trân trọng kính mời',
-      subtitle: 'Quý khách tới dự lễ thành hôn của chúng tôi',
+      subtitle: 'Quý khách đến dự lễ thành hôn của chúng tôi',
       groomSide: 'Họ Nhà Trai', brideSide: 'Họ Nhà Gái',
       groomRole: 'Trưởng Nam', brideRole: 'Trưởng Nữ',
       mr: 'Ông', mrs: 'Bà',
@@ -32,7 +32,7 @@ export const translations = {
       subtitle: 'Hân hạnh được đón tiếp Quý khách',
       viewMap: 'Xem bản đồ',
       events: {
-        ceremony: { label: 'Lễ Cưới Tại Nhà Thờ', timeNote: 'Chiều' },
+        ceremony: { label: 'Lễ Cưới Tại Nhà Thờ', timeNote: 'Trưa' },
         reception: { label: 'Tiệc Cưới', timeNote: 'Tối' },
       },
     },
@@ -98,7 +98,7 @@ export const translations = {
       subtitle: 'We look forward to seeing you',
       viewMap: 'View map',
       events: {
-        ceremony: { label: 'Church Ceremony', timeNote: 'PM' },
+        ceremony: { label: 'Church Ceremony', timeNote: 'AM' },
         reception: { label: 'Wedding Reception', timeNote: 'Evening' },
       },
     },

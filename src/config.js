@@ -33,8 +33,8 @@ export const wedding = {
       key: 'ceremony',
       label: 'Lễ Cưới Tại Nhà Thờ',
       eyebrow: 'Holy Matrimony',
-      time: '14:00',
-      timeNote: 'Chiều',
+      time: '10:30',
+      timeNote: 'Trưa',
       venue: 'St. Mary Catholic Church',
       address: '401 Van Pelt Ln, Pensacola, FL 32505',
       mapUrl:

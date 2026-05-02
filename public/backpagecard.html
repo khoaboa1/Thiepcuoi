@@ -17,6 +17,42 @@
       font-family: 'DFVNPencerio';
       src: url('/fonts/DFVNPencerio.ttf') format('truetype');
     }
+    @font-face {
+  font-family: 'FZAlphaBrights';
+  src: url('/fonts/FzAlphaBrights.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+  @font-face {
+    font-family: 'MadinahAuthentic';
+    src: url('/fonts/FzMadinahAuthentic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family:'FZ-Algeron';
+    src:url('/fonts/Fz-Algeron.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+  }
+  @font-face {
+    font-family:'FZFashion';
+    src:url('/fonts/FzFashionSignature.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+  }
+  @font-face {
+    font-family:'FZGallerya';
+    src:url('/fonts/FzGallerya.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+  }
+  @font-face {
+    font-family:'FzAghita';
+    src:url('/fonts/FzAghita.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+  }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -116,7 +152,7 @@
       body { background: white; padding: 0; }
       .controls { display: none; }
       .card { box-shadow: none; margin: 0; }
-      @page { size: 36cm 24cm landscape; margin: 0; }
+      @page { size: 36cm 24cm; margin: 0; }
     }
   </style>
 </head>
@@ -303,7 +339,7 @@
       <!-- HTML second (visual TOP): Thiệp Mời / Wedding Invitation -->
       <div class="words" style="gap:0;">
 
-        <p style="font-family:'DFVNLeagueScript','Cormorant Garamond',serif;
+        <p style="font-family:'FZGallerya','Cormorant Garamond',serif;
                   font-size:52pt;color:#6B4F3B;line-height:1;margin-bottom:4mm;">
           Thiệp Mời
         </p>
@@ -319,6 +355,10 @@
                   letter-spacing:0.4em;text-transform:uppercase;color:#B89766;">
           Wedding Invitation
         </p>
+
+        <!-- Icon image -->
+        <img src="/icon/iconpic.png" alt="Wedding Icon"
+             style="width:180mm;height:auto">
 
       </div>
 
