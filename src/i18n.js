@@ -21,7 +21,7 @@ export const translations = {
       heading: 'Lễ Thành Hôn',
       dayLabel: 'Ngày', monthLabel: 'Tháng', yearLabel: 'Năm',
       subtitle: 'Tham dự tiệc mừng lễ thành hôn của chúng tôi',
-      weekday: 'Thứ Sáu',
+      weekday: 'Thứ Bảy',
       months: ['Một','Hai','Ba','Tư','Năm','Sáu','7','8','Chín','Mười','Mười một','Mười hai'],
     },
     calendar: {
@@ -87,7 +87,7 @@ export const translations = {
       heading: 'Holy Matrimony',
       dayLabel: 'Day', monthLabel: 'Month', yearLabel: 'Year',
       subtitle: 'Join us to celebrate our marriage',
-      weekday: 'Friday',
+      weekday: 'Saturday',
       months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
     },
     calendar: {
